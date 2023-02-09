@@ -1,11 +1,14 @@
 import "./header.css";
 import logo from "../../assets/img/logo.svg";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
     <header>
       <div className="container header-content">
-        <img src={logo} alt="logo-vinted" />
+        <Link to="/">
+          <img src={logo} alt="logo-vinted" />
+        </Link>
         <input
           className="search"
           type="text"

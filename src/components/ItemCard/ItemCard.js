@@ -24,6 +24,8 @@ const ItemCard = ({ offerInfo }) => {
               return <p key={index}>{detail.TAILLE}</p>;
             } else if (detail.MARQUE) {
               return <p key={index}>{detail.MARQUE}</p>;
+            } else {
+              return null;
             }
           })}
         </div>

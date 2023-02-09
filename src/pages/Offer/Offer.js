@@ -24,7 +24,7 @@ const Offer = () => {
       }
     };
     fetchData();
-  }, []);
+  }, [id]);
 
   return isLoading ? (
     <p>Loading...</p>
@@ -32,43 +32,37 @@ const Offer = () => {
     <section className="offer-main">
       <div className="item-box">
         <div className="offer-images">
-          <img src={data.product_image.secure_url} alt="" />
+          <img src={data.product_image.secure_url} alt="product" />
         </div>
         <div className="offer-info">
-          <div className="offer-stats">
-            <ul>
-              <li>
-                <span>MARQUE</span> <span>HM</span>
-              </li>
-              <li>
-                <span>TAILLE</span> <span>6 ANS / 110-116 CM</span>
-              </li>
-              <li>
-                <span>ÉTAT</span> <span>NEUF SANS ETIQUETTE</span>
-              </li>
-              <li>
-                <span>COULEUR</span> <span>MARINE</span>
-              </li>
-              <li>
-                <span>EMPLACEMENT</span> <span>ESPANA</span>
-              </li>
-              <li>
-                <span>MODES DE PAIEMENT</span>{" "}
-                <span>CARTE BANCAIRE, PAYPAL</span>
-              </li>
-            </ul>
+          <div className="offer-top-section">
+            <p className="offer-price">{data.product_price} €</p>
+            {data.product_details.map((detail, index) => {
+              const key = Object.keys(detail)[0];
+              return (
+                <div className="offer-stats" key={index}>
+                  {/* J'affiche le nom dela clef  */}
+                  <span className="offer-key">{key} </span>
+                  <span className="offer-value">{detail[key]}</span>
+                </div>
+              );
+            })}
           </div>
+
           <div className="offer-description">
-            <p>Robe H&M 4/6 ans 🌟 Vestido H&M 4/6 años</p>
-            <p>
-              {" "}
-              vestido de manga larga y pequeña falda de vuelo Color azul marino
-              con dibujos frontales Marca H&M Talla 4/6 años ( 110 - 116 cm
-              )apenas usado como nuevo
+            <p className="offer-product-name">{data.product_name}</p>
+            <p className="offer-product-description">
+              {data.product_description}
             </p>
             <div className="offer-profile">
-              <div className="offer-profile-pic"></div>
-              <span className="offer-username">Angadrême.Philippe98</span>
+              {data.owner.account.avatar && (
+                <div className="offer-profile-pic">
+                  <img src={data.owner.account.avatar.secure_url} alt="" />
+                </div>
+              )}
+              <span className="offer-username">
+                {data.owner.account.username}
+              </span>
             </div>
           </div>
           <button className="buy-btn">Acheter</button>
