@@ -1,6 +1,5 @@
 import "./header.css";
-import logo from "/Users/simonjordan/LeReacteur-Formation/REACT/vinted-react/vinted-front/src/assets/img/logo.svg";
-import hero from "/Users/simonjordan/LeReacteur-Formation/REACT/vinted-react/vinted-front/src/assets/img/hero-image.jpg";
+import logo from "../../assets/img/logo.svg";
 
 const Header = () => {
   return (
@@ -20,12 +19,6 @@ const Header = () => {
           <button className="call-to-sell-btn">Vends tes articles</button>
         </div>
       </div>
-
-      <img
-        className="hero-img"
-        src={hero}
-        alt="people folding clothes on bed laughing"
-      />
     </header>
   );
 };

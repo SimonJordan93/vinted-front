@@ -2,8 +2,8 @@ import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 // Pages
-import Home from "./pages/Home";
-import Offer from "./pages/Offer";
+import Home from "./pages/Home/Home";
+import Offer from "./pages/Offer/Offer";
 
 // Components
 import Header from "./components/Header/Header";
