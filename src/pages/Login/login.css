@@ -1,0 +1,49 @@
+.login-container h2 {
+  font-size: 24px;
+  text-align: center;
+  margin-top: 50px;
+  margin-bottom: 25px;
+}
+
+.login-form {
+  /* background-color: aquamarine; */
+  margin: 0 auto;
+  width: 275px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-bottom: 10px;
+}
+
+.login-form input {
+  height: 40px;
+  border: none;
+  outline: none;
+  border-bottom: 1px solid rgba(255, 140, 0, 0.597);
+}
+
+.login-submit {
+  background-color: #027580;
+  margin-top: 20px;
+  color: white;
+  font-size: 16px;
+  height: 45px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.login-submit:hover {
+  background-color: #027680e7;
+}
+
+.signup-redirect {
+  font-size: 14px;
+  text-align: center;
+  text-decoration: none;
+  color: #027580;
+}
+
+.signup-redirect:hover {
+  color: #027680e7;
+}

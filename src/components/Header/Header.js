@@ -12,12 +12,17 @@ const Header = () => {
         <input
           className="search"
           type="text"
-          placeholder=" 🔎 Rechercher des articles"
+          placeholder=" 🔍 Rechercher des articles"
         ></input>
         <div className="header-btns">
           <button className="sign-btns">
-            <span className="sign-up">S'inscrire</span> |{" "}
-            <span className="sign-in">Se connecter</span>
+            <Link to="/signup" className="sign-up">
+              <span>S'inscrire</span>
+            </Link>{" "}
+            |{" "}
+            <Link to="/login" className="sign-in">
+              <span>Se connecter</span>
+            </Link>
           </button>
           <button className="call-to-sell-btn">Vends tes articles</button>
         </div>

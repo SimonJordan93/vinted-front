@@ -44,14 +44,13 @@ header {
 
 .sign-btns,
 .call-to-sell-btn {
-  height: 28px;
+  height: 30px;
   border: 1px solid #027580;
   border-radius: 5px;
 }
 
 .sign-btns {
   background-color: white;
-  color: #027580;
   margin-right: 60px;
 }
 
@@ -67,6 +66,12 @@ header {
 .sign-btns:hover,
 .call-to-sell-btn:hover {
   cursor: pointer;
+}
+
+.sign-up,
+.sign-in {
+  text-decoration: none;
+  color: #027580;
 }
 
 .sign-up:hover,
