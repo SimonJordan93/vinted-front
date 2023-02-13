@@ -74,7 +74,7 @@ const Signup = ({ handleToken }) => {
         <input
           placeholder="Nom d'utilisateur"
           type="text"
-          name="email"
+          name="username"
           value={username}
           onChange={handleUsernameChange}
         />
@@ -87,8 +87,8 @@ const Signup = ({ handleToken }) => {
         />
         <input
           placeholder="Mot de passe"
-          type="text"
-          name="email"
+          type="password"
+          name="password"
           value={password}
           onChange={handlePasswordChange}
         />

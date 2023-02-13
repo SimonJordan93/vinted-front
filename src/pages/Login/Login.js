@@ -57,8 +57,8 @@ const Login = ({ handleToken }) => {
         />
         <input
           placeholder="Mot de passe"
-          type="text"
-          name="email"
+          type="password"
+          name="password"
           value={password}
           onChange={handlePasswordChange}
         />

@@ -51,6 +51,7 @@ header {
   border: 1px solid #027580;
   height: 30px;
   border-radius: 5px;
+  letter-spacing: 0.5px;
 }
 
 .sign-btns {

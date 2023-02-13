@@ -33,7 +33,9 @@ const Header = ({ handleToken, token, search, setSearch }) => {
             >
               Se Déconnecter
             </button>
-            <button className="call-to-sell-btn">Vends tes articles</button>
+            <Link to="/publish" className="call-to-sell-btn">
+              <button className="call-to-sell-btn">Vends tes articles</button>
+            </Link>
           </div>
         </>
       ) : (
@@ -61,7 +63,9 @@ const Header = ({ handleToken, token, search, setSearch }) => {
                 <span>Se connecter</span>
               </Link>
             </button>
-            <button className="call-to-sell-btn">Vends tes articles</button>
+            <Link to="/login" className="call-to-sell-btn">
+              <button className="call-to-sell-btn">Vends tes articles</button>
+            </Link>
           </div>
         </div>
       )}
