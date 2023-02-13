@@ -42,14 +42,21 @@ header {
   font-size: 16px;
 }
 
+.header-btns {
+  display: flex;
+}
+
 .sign-btns,
 .call-to-sell-btn {
-  height: 30px;
   border: 1px solid #027580;
+  height: 30px;
   border-radius: 5px;
 }
 
 .sign-btns {
+  display: flex;
+  align-items: center;
+  gap: 10px;
   background-color: white;
   margin-right: 60px;
 }
@@ -77,4 +84,13 @@ header {
 .sign-up:hover,
 .sign-in:hover {
   color: #00464c;
+}
+
+.logout-btn {
+  cursor: pointer;
+  height: 30px;
+  border-radius: 5px;
+  border: none;
+  background-color: #9a0024;
+  color: white;
 }

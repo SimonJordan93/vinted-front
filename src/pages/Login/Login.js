@@ -1,11 +1,14 @@
 import "../Login/login.css";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
-const Login = () => {
+const Login = ({ handleToken }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
+
+  const navigate = useNavigate();
 
   const handleEmailChange = (event) => {
     const value = event.target.value;
@@ -16,10 +19,35 @@ const Login = () => {
     const value = event.target.value;
     setPassword(value);
   };
+
+  const handleLogin = async (event) => {
+    event.preventDefault();
+    try {
+      const response = await axios.post(
+        "https://lereacteur-vinted-api.herokuapp.com/user/login",
+        {
+          email: email,
+          password: password,
+        }
+      );
+      console.log(response.data);
+      if (response.data.token) {
+        // Cookies.set("token-vinted", response.data.token, { expires: 30 });
+        handleToken(response.data.token);
+        navigate("/");
+      }
+    } catch (error) {
+      console.log(error.response.data);
+      if (error.response.data === "Unauthorized" || "User not found") {
+        setErrorMessage("Votre email ou votre mot de passe est incorrect.");
+      }
+    }
+  };
+
   return (
     <section className="login-container">
       <h2>Se connecter</h2>
-      <form className="login-form">
+      <form onSubmit={handleLogin} className="login-form">
         <input
           placeholder="Email"
           type="text"
@@ -35,7 +63,12 @@ const Login = () => {
           onChange={handlePasswordChange}
         />
 
-        <button className="login-submit">Se connecter</button>
+        <button type="submit" className="login-submit">
+          Se connecter
+        </button>
+        {errorMessage && (
+          <p style={{ color: "red", textAlign: "center" }}>{errorMessage}</p>
+        )}
       </form>
       <Link className="signup-redirect" to="/signup">
         <p>Pas encore de compte ? Inscris-toi</p>
