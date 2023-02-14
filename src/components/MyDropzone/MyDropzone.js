@@ -10,7 +10,7 @@ const MyDropzone = ({ setPicture, picture }) => {
     [setPicture]
   );
 
-  const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
+  const { getRootProps, getInputProps } = useDropzone({ onDrop });
 
   return (
     <div className="file-text" {...getRootProps()}>

@@ -17,6 +17,7 @@ function App() {
   const [token, setToken] = useState(Cookies.get("token-vinted") || null);
   const [search, setSearch] = useState("");
   const [values, setValues] = useState([0, 500]);
+  const [sortPrice, setSortPrice] = useState("");
 
   const handleToken = (token) => {
     if (token) {
@@ -38,9 +39,16 @@ function App() {
           setSearch={setSearch}
           values={values}
           setValues={setValues}
+          sortPrice={sortPrice}
+          setSortPrice={setSortPrice}
         />
         <Routes>
-          <Route path="/" element={<Home search={search} values={values} />} />
+          <Route
+            path="/"
+            element={
+              <Home search={search} values={values} sortPrice={sortPrice} />
+            }
+          />
           <Route path="/offer/:id" element={<Offer />} />
           <Route
             path="/signup"

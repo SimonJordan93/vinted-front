@@ -3,6 +3,7 @@
   width: 100%;
   background-color: #027680;
   position: relative;
+  border-radius: 2px;
 }
 
 .range-thumb {
@@ -21,7 +22,6 @@
   left: 50%;
   font-size: 14Òpx;
   color: white;
-
   background-color: #027580;
   border-radius: 3px;
   padding: 3px;
@@ -29,11 +29,11 @@
 }
 
 .min-thumb-value {
-  top: -35px;
-  transform: translateX(-140%);
+  top: -32px;
+  transform: translateX(-160%);
 }
 
 .max-thumb-value {
-  top: -35px;
+  top: -32px;
   transform: translateX(50%);
 }

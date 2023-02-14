@@ -1,0 +1,26 @@
+.switch {
+  /* border: 1px solid black; */
+  width: 55px;
+  margin-right: 40px;
+  display: flex;
+  font-size: 16px;
+}
+
+.on,
+.off {
+  padding: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  height: 40px;
+  width: 75px;
+  border: 1px solid lightgray;
+  color: #027580;
+  cursor: pointer;
+}
+
+.on {
+  background-color: #027580;
+  color: white;
+}

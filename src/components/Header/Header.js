@@ -3,9 +3,9 @@ import "./header.css";
 import logo from "../../assets/img/logo.svg";
 import { Link } from "react-router-dom";
 import { DebounceInput } from "react-debounce-input";
-import { useState } from "react";
 
 import Slider from "../Slider/Slider";
+import Switch from "../Toggle/Toggle";
 
 const Header = ({
   handleToken,
@@ -14,9 +14,9 @@ const Header = ({
   setSearch,
   values,
   setValues,
+  sortPrice,
+  setSortPrice,
 }) => {
-  const [isToggled, toggle] = useState(true);
-
   return (
     <header>
       {/* Si le token existe, on affiche déconnexion, sinon s'inscrire et se connecter */}
@@ -39,7 +39,9 @@ const Header = ({
               ></DebounceInput>
               <div className="refined-search">
                 <span>Trier par prix:</span>
-                <div className="toggle-box"></div>
+
+                <Switch sortPrice={sortPrice} setSortPrice={setSortPrice} />
+
                 <span>Prix entre:</span>
                 <div className="price-range">
                   <Slider values={values} setValues={setValues} />
@@ -66,16 +68,28 @@ const Header = ({
           <Link to="/">
             <img src={logo} alt="logo-vinted" />
           </Link>
-          <DebounceInput
-            value={search}
-            debounceTimeout={300}
-            onChange={(event) => {
-              setSearch(event.target.value);
-            }}
-            className="search"
-            type="text"
-            placeholder=" Rechercher des articles"
-          ></DebounceInput>
+          <div className="find-item">
+            <DebounceInput
+              value={search}
+              debounceTimeout={300}
+              onChange={(event) => {
+                setSearch(event.target.value);
+              }}
+              className="search"
+              type="text"
+              placeholder=" Rechercher des articles"
+            ></DebounceInput>
+            <div className="refined-search">
+              <span>Trier par prix:</span>
+
+              <Switch sortPrice={sortPrice} setSortPrice={setSortPrice} />
+
+              <span>Prix entre:</span>
+              <div className="price-range">
+                <Slider values={values} setValues={setValues} />
+              </div>
+            </div>
+          </div>
           <div className="header-btns">
             <button className="sign-btns">
               <Link to="/signup" className="sign-up">

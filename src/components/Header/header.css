@@ -66,13 +66,6 @@ header {
   font-size: 12px;
 }
 
-.toggle-box {
-  border: 1px solid black;
-  height: 25px;
-  width: 50px;
-  margin-right: 40px;
-}
-
 .price-range {
   /* border: 1px solid black; */
   height: 25px;

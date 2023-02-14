@@ -53,7 +53,7 @@ const Publish = ({ token }) => {
       console.log(response);
     } catch (error) {
       // console.log(token);
-      console.log(error.message);
+      console.log(error.response.data);
     }
   };
 
@@ -71,7 +71,6 @@ const Publish = ({ token }) => {
                 setPicture(event.target.files[0]);
               }}
             /> */}
-
           </div>
           <div className="text-input-section">
             <div className="text-input">

@@ -4,7 +4,7 @@ import { Range } from "react-range";
 const Slider = ({ values, setValues }) => {
   return (
     <Range
-      step={10}
+      step={5}
       min={0}
       max={1000}
       values={values}
