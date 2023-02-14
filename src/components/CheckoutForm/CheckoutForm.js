@@ -6,10 +6,11 @@ import { useState } from "react";
 
 const CheckoutForm = ({
   userId,
-  name,
+  title,
   price,
   totalPrice,
-  totalPriceInCents,
+  shippingFee,
+  handleFee,
 }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [completed, setCompleted] = useState(false);
@@ -23,20 +24,21 @@ const CheckoutForm = ({
       setIsLoading(true);
 
       const cardElement = elements.getElement(CardElement);
-      console.log(cardElement);
+      // console.log(cardElement);
 
       const stripeResponse = await stripe.createToken(cardElement, {
         name: userId,
       });
-      console.log(stripeResponse);
+      // console.log(stripeResponse);
+
       const stripeToken = stripeResponse.token.id;
-      console.log(stripeToken);
+      // console.log(stripeToken);
 
       const response = await axios.post(
         "https://lereacteur-vinted-api.herokuapp.com/payment",
         {
           stripeToken: stripeToken,
-          title: name,
+          title: title,
           amount: totalPrice,
         }
       );
@@ -65,11 +67,11 @@ const CheckoutForm = ({
             </li>
             <li>
               <span>Frais protection acheteurs</span>
-              <span>2 €</span>
+              <span>{handleFee} €</span>
             </li>
             <li>
               <span>Frais de port</span>
-              <span>4 €</span>
+              <span>{shippingFee} €</span>
             </li>
           </ul>
         </div>
@@ -81,7 +83,7 @@ const CheckoutForm = ({
       <div className="payment-content">
         <p>
           Il ne vous reste plus qu'un étape pour vous offrir{" "}
-          <span className="bold">{name}</span>. Vous allez payer{" "}
+          <span className="bold">{title}</span>. Vous allez payer{" "}
           <span className="bold">{totalPrice} €</span> (frais de protection et
           frais de port inclus).
         </p>

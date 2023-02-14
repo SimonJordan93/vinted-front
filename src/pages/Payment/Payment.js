@@ -14,25 +14,31 @@ const stripePromise = loadStripe(
 
 const Payment = () => {
   const location = useLocation();
-  // console.log(location.state);
+  console.log(location.state);
   const userId = location.state.data.owner._id;
   const price = location.state.data.product_price;
-  const name = location.state.data.product_description;
+  const title = location.state.data.product_name;
   // console.log(userId);
 
-  const fee = 2;
-  const shipping = 4;
-  const totalPrice = parseInt(price) + fee + shipping;
-  const totalPriceInCents = totalPrice * 1000;
+  const shippingFee = ((20 / 100) * price).toFixed(2);
+  const handleFee = ((10 / 100) * price).toFixed(2);
+  const totalPrice = (
+    Number(price) +
+    Number(shippingFee) +
+    Number(handleFee)
+  ).toFixed(2);
+  // const totalPriceInCents = totalPrice * 1000;
   return (
     <div className="payment-main">
       <Elements stripe={stripePromise}>
         <CheckoutForm
           userId={userId}
-          name={name}
+          title={title}
           price={price}
+          shippingFee={shippingFee}
+          handleFee={handleFee}
           totalPrice={totalPrice}
-          totalPriceInCents={totalPriceInCents}
+          // totalPriceInCents={totalPriceInCents}
         />
       </Elements>
     </div>
