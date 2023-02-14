@@ -13,16 +13,24 @@ const Header = ({ handleToken, token, search, setSearch }) => {
             <Link to="/">
               <img src={logo} alt="logo-vinted" />
             </Link>
-            <DebounceInput
-              value={search}
-              debounceTimeout={300}
-              onChange={(event) => {
-                setSearch(event.target.value);
-              }}
-              className="search"
-              type="text"
-              placeholder=" Rechercher des articles"
-            ></DebounceInput>
+            <div className="find-item">
+              <DebounceInput
+                value={search}
+                debounceTimeout={300}
+                onChange={(event) => {
+                  setSearch(event.target.value);
+                }}
+                className="search"
+                type="text"
+                placeholder=" Rechercher des articles"
+              ></DebounceInput>
+              <div className="refined-search">
+                <span></span>
+                <div></div>
+                <span></span>
+                <div></div>
+              </div>
+            </div>
 
             <button
               className="logout-btn"

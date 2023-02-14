@@ -35,12 +35,39 @@
   align-items: center;
 }
 
-.file-input input {
-  border: 1px solid black;
-  display: block;
+.file-text {
+  background-color: white;
+  border: 2px dotted #027680b7;
+  width: 95%;
+  height: 90%;
+  font-size: 20px;
+  letter-spacing: 1px;
+  color: #027580;
+  border-radius: 5px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.text-input-section {
+/* label input {
+  display: none;
+} */
+
+/* label {
+  background-color: white;
+  border: 2px solid #027580;
+  font-size: 20px;
+  letter-spacing: 1px;
+  color: #027580;
+  border-radius: 5px;
+  padding: 12px;
+  margin: 50px 0;
+  cursor: pointer;
+} */
+
+.text-input-section,
+.file-input {
   background-color: #fff;
   box-shadow: 0 0 2px grey;
   margin: 20px 0;
@@ -128,4 +155,8 @@
   padding: 12px;
   margin: 50px 0;
   cursor: pointer;
+}
+
+.form-button:active {
+  background-color: #027680b9;
 }

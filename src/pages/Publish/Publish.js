@@ -1,10 +1,14 @@
 import "../Publish/publish.css";
 import { useState } from "react";
 import axios from "axios";
+import { Navigate } from "react-router-dom";
+
+import MyDropzone from "../../components/MyDropzone/MyDropzone";
 
 const Publish = ({ token }) => {
   // File input
-  const [file, setFile] = useState();
+  const [picture, setPicture] = useState();
+  // const [imageToDisplay, setImageToDisplay] = useState();
 
   // Text inputs
   const [title, setTitle] = useState("");
@@ -18,7 +22,7 @@ const Publish = ({ token }) => {
   const [checkbox, setCheckbox] = useState(false);
 
   // Submit function
-  const handleSubmit = async (event) => {
+  const handlePublish = async (event) => {
     event.preventDefault();
     try {
       const formData = new FormData();
@@ -32,7 +36,7 @@ const Publish = ({ token }) => {
       formData.append("location", location);
       formData.append("price", price);
       formData.append("checkbox", checkbox);
-      formData.append("file", file);
+      formData.append("picture", picture);
       // axios.post gets 3 arguments: url to share, body in formData, potenital headers to send
       // token and body type are sent here
       const response = await axios.post(
@@ -45,25 +49,28 @@ const Publish = ({ token }) => {
           },
         }
       );
+      // console.log(token);
       console.log(response);
-      setFile(response.data);
     } catch (error) {
+      // console.log(token);
       console.log(error.message);
     }
   };
 
-  return (
+  return token ? (
     <div className="publish-main">
       <div className="publish-container">
         <h2>Vends ton article</h2>
-        <form onSubmit={handleSubmit} className="publish-form">
+        <form onSubmit={handlePublish} className="publish-form">
           <div className="file-input">
-            <input
+            <MyDropzone picture={picture} setPicture={setPicture} />
+            {/* <input
               type="file"
               onChange={(event) => {
-                setFile(event.target.files[0]);
+                console.log("File input changed");
+                setPicture(event.target.files[0]);
               }}
-            />
+            /> */}
           </div>
           <div className="text-input-section">
             <div className="text-input">
@@ -181,6 +188,8 @@ const Publish = ({ token }) => {
         </form>
       </div>
     </div>
+  ) : (
+    <Navigate to="/" />
   );
 };
 

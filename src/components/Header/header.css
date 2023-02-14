@@ -21,6 +21,9 @@ header {
   align-items: center;
 }
 
+.find-item {
+}
+
 .search {
   background-color: rgb(245, 245, 245);
   height: 75%;
