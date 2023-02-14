@@ -4,20 +4,55 @@ import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import axios from "axios";
 import { useState } from "react";
 
-const CheckoutForm = () => {
+const CheckoutForm = ({
+  userId,
+  name,
+  price,
+  totalPrice,
+  totalPriceInCents,
+}) => {
   const [isLoading, setIsLoading] = useState(false);
   const [completed, setCompleted] = useState(false);
 
-  const Stripe = useStripe();
+  const stripe = useStripe();
   const elements = useElements();
 
-  try {
-  } catch (error) {
-    console.log(error.message);
-  }
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    try {
+      setIsLoading(true);
+
+      const cardElement = elements.getElement(CardElement);
+      console.log(cardElement);
+
+      const stripeResponse = await stripe.createToken(cardElement, {
+        name: userId,
+      });
+      console.log(stripeResponse);
+      const stripeToken = stripeResponse.token.id;
+      console.log(stripeToken);
+
+      const response = await axios.post(
+        "https://lereacteur-vinted-api.herokuapp.com/payment",
+        {
+          stripeToken: stripeToken,
+          title: name,
+          amount: totalPrice,
+        }
+      );
+      console.log(response.data);
+
+      if (response.data === "succeeded") {
+        setIsLoading(false);
+        setCompleted(true);
+      }
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
 
   return (
-    <form className="checkout-form">
+    <form className="checkout-form" onSubmit={handleSubmit}>
       <div className="checkout-summary">
         <div className="checkout-title">
           <span>Résumé de la commande</span>
@@ -26,7 +61,7 @@ const CheckoutForm = () => {
           <ul>
             <li>
               <span>Commande</span>
-              <span>100 €</span>
+              <span>{price} €</span>
             </li>
             <li>
               <span>Frais protection acheteurs</span>
@@ -40,18 +75,25 @@ const CheckoutForm = () => {
         </div>
         <div className="checkout-total">
           <span>Total</span>
-          <span>106 €</span>
+          <span>{totalPrice} €</span>
         </div>
       </div>
       <div className="payment-content">
         <p>
           Il ne vous reste plus qu'un étape pour vous offrir{" "}
-          <span className="bold">Oups</span>. Vous allez payer{" "}
-          <span className="bold">0.00001 €</span> (frais de protection et frais
-          de port inclus).
+          <span className="bold">{name}</span>. Vous allez payer{" "}
+          <span className="bold">{totalPrice} €</span> (frais de protection et
+          frais de port inclus).
         </p>
-        <CardElement />
+        <CardElement className="card-input" />
       </div>
+      {completed ? (
+        <p>Paiement effectué</p>
+      ) : (
+        <button disabled={isLoading} className="pay-button" type="submit">
+          Confimer le paiement
+        </button>
+      )}
     </form>
   );
 };

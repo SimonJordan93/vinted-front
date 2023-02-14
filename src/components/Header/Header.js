@@ -39,9 +39,7 @@ const Header = ({
               ></DebounceInput>
               <div className="refined-search">
                 <span>Trier par prix:</span>
-
                 <Switch sortPrice={sortPrice} setSortPrice={setSortPrice} />
-
                 <span>Prix entre:</span>
                 <div className="price-range">
                   <Slider values={values} setValues={setValues} />
@@ -81,9 +79,7 @@ const Header = ({
             ></DebounceInput>
             <div className="refined-search">
               <span>Trier par prix:</span>
-
               <Switch sortPrice={sortPrice} setSortPrice={setSortPrice} />
-
               <span>Prix entre:</span>
               <div className="price-range">
                 <Slider values={values} setValues={setValues} />

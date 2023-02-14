@@ -18,16 +18,17 @@ const Slider = ({ values, setValues }) => {
         <>
           <div
             {...props}
+            key={`thumb-${index}`}
             className={
               index === 0
                 ? "range-thumb range-thumb-min"
                 : "range-thumb range-thumb-max"
             }
           />
-          <div className="min-thumb-value">
+          <div key={`min-value-${index}`} className="min-thumb-value">
             <span>Prix min: {values[0]}</span>
           </div>
-          <div className="max-thumb-value">
+          <div key={`max-value-${index}`} className="max-thumb-value">
             <span>Prix max: {values[1]}</span>
           </div>
         </>

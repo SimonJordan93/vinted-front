@@ -25,7 +25,7 @@ const Home = ({ search, values, sortPrice }) => {
     fetchData();
   }, [search, values, sortPrice]);
   return isLoading ? (
-    <span class="loader"></span>
+    <span className="loader"></span>
   ) : (
     <>
       <img className="hero-img" src={hero} alt="hero" />

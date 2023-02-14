@@ -65,7 +65,7 @@ const Offer = () => {
               </span>
             </div>
           </div>
-          <Link to="/payment" className="buy-link">
+          <Link to="/payment" className="buy-link" state={{ data: data }}>
             <span>Acheter</span>
           </Link>
         </div>
