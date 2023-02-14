@@ -16,6 +16,7 @@ import Header from "./components/Header/Header";
 function App() {
   const [token, setToken] = useState(Cookies.get("token-vinted") || null);
   const [search, setSearch] = useState("");
+  const [values, setValues] = useState([0, 500]);
 
   const handleToken = (token) => {
     if (token) {
@@ -35,9 +36,11 @@ function App() {
           token={token}
           search={search}
           setSearch={setSearch}
+          values={values}
+          setValues={setValues}
         />
         <Routes>
-          <Route path="/" element={<Home search={search} />} />
+          <Route path="/" element={<Home search={search} values={values} />} />
           <Route path="/offer/:id" element={<Offer />} />
           <Route
             path="/signup"

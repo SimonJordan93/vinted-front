@@ -13,24 +13,28 @@ header {
   width: 100vw;
 }
 
+.header-logo {
+  width: 105px;
+}
+
+.header-logo img {
+  width: 100%;
+}
+
 .header-content {
   /* background-color: antiquewhite; */
-  height: 52px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.find-item {
-}
-
 .search {
   background-color: rgb(245, 245, 245);
-  height: 75%;
-  width: 500px;
+  height: 40px;
+  width: 600px;
   border: none;
   border-radius: 5px;
-
+  border-bottom: 20px;
   font-size: 16px;
 }
 
@@ -40,9 +44,41 @@ header {
 
 ::placeholder {
   /* Chrome, Firefox, Opera, Safari 10.1+ */
-  color: rgb(200, 200, 200);
+  color: rgb(173, 173, 173);
   opacity: 1; /* Firefox */
   font-size: 16px;
+}
+
+.find-item {
+  margin: 10px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.refined-search {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.refined-search span {
+  font-size: 12px;
+}
+
+.toggle-box {
+  border: 1px solid black;
+  height: 25px;
+  width: 50px;
+  margin-right: 40px;
+}
+
+.price-range {
+  /* border: 1px solid black; */
+  height: 25px;
+  width: 350px;
+  display: flex;
+  align-items: center;
 }
 
 .header-btns {

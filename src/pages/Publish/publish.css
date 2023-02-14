@@ -35,9 +35,31 @@
   align-items: center;
 }
 
+.uploaded-pic {
+  height: 170px;
+  width: 170px;
+  position: relative;
+}
+
+.uploaded-pic img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  cursor: auto;
+}
+
+.cancel-pic {
+  position: absolute;
+  background-color: #ffffff;
+  color: #027580;
+  border: 1px solid #027580;
+  cursor: pointer;
+  display: block;
+}
+
 .file-text {
   background-color: white;
-  border: 2px dotted #027680b7;
+  border: 2px dotted #02768068;
   width: 95%;
   height: 90%;
   font-size: 20px;

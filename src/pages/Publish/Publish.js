@@ -71,6 +71,7 @@ const Publish = ({ token }) => {
                 setPicture(event.target.files[0]);
               }}
             /> */}
+
           </div>
           <div className="text-input-section">
             <div className="text-input">

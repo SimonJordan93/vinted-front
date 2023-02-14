@@ -6,7 +6,7 @@ import hero from "../../assets/img/hero-image.jpg";
 //Components
 import ItemCard from "../../components/ItemCard/ItemCard";
 
-const Home = ({ search }) => {
+const Home = ({ search, values }) => {
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
 
@@ -14,7 +14,7 @@ const Home = ({ search }) => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `https://lereacteur-vinted-api.herokuapp.com/offers?title=${search}`
+          `https://lereacteur-vinted-api.herokuapp.com/offers?title=${search}&priceMin=${values[0]}&priceMax=${values[1]}`
         );
         setData(response.data);
         setIsLoading(false);

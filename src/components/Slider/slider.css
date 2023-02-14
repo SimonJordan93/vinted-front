@@ -1,0 +1,39 @@
+.range-track {
+  height: 6px;
+  width: 100%;
+  background-color: #027680;
+  position: relative;
+}
+
+.range-thumb {
+  background-color: #027580;
+  height: 15px;
+  width: 15px;
+  border-radius: 50%;
+  border: 1px solid rgb(255, 255, 255);
+
+  position: absolute;
+}
+
+.min-thumb-value,
+.max-thumb-value {
+  position: absolute;
+  left: 50%;
+  font-size: 14Òpx;
+  color: white;
+
+  background-color: #027580;
+  border-radius: 3px;
+  padding: 3px;
+  letter-spacing: 1px;
+}
+
+.min-thumb-value {
+  top: -35px;
+  transform: translateX(-140%);
+}
+
+.max-thumb-value {
+  top: -35px;
+  transform: translateX(50%);
+}

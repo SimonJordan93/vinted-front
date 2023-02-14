@@ -1,16 +1,29 @@
 import "./header.css";
+
 import logo from "../../assets/img/logo.svg";
 import { Link } from "react-router-dom";
 import { DebounceInput } from "react-debounce-input";
+import { useState } from "react";
 
-const Header = ({ handleToken, token, search, setSearch }) => {
+import Slider from "../Slider/Slider";
+
+const Header = ({
+  handleToken,
+  token,
+  search,
+  setSearch,
+  values,
+  setValues,
+}) => {
+  const [isToggled, toggle] = useState(true);
+
   return (
     <header>
       {/* Si le token existe, on affiche déconnexion, sinon s'inscrire et se connecter */}
       {token ? (
         <>
           <div className="container header-content">
-            <Link to="/">
+            <Link className="header-logo" to="/">
               <img src={logo} alt="logo-vinted" />
             </Link>
             <div className="find-item">
@@ -25,10 +38,12 @@ const Header = ({ handleToken, token, search, setSearch }) => {
                 placeholder=" Rechercher des articles"
               ></DebounceInput>
               <div className="refined-search">
-                <span></span>
-                <div></div>
-                <span></span>
-                <div></div>
+                <span>Trier par prix:</span>
+                <div className="toggle-box"></div>
+                <span>Prix entre:</span>
+                <div className="price-range">
+                  <Slider values={values} setValues={setValues} />
+                </div>
               </div>
             </div>
 
