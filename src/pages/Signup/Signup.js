@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-const Signup = ({ handleToken }) => {
+const Signup = ({ handleTokenAndId }) => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -47,7 +47,7 @@ const Signup = ({ handleToken }) => {
       //   Si je reçois bien un token
       if (response.data.token) {
         // Cookies.set("token-vinted", response.data.token, { expires: 30 });
-        handleToken(response.data.token);
+        handleTokenAndId(response.data.token, response.data._id);
         // Et je redirige vers Home
         navigate("/");
       }

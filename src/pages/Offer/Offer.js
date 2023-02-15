@@ -68,7 +68,7 @@ const Offer = ({ token }) => {
           <Link
             to={token ? "/payment" : "/login"}
             className="buy-link"
-            state={{ data: data }}
+            state={token ? data : null}
           >
             <span>Acheter</span>
           </Link>
