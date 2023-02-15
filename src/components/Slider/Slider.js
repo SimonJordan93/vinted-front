@@ -15,23 +15,17 @@ const Slider = ({ values, setValues }) => {
         </div>
       )}
       renderThumb={({ props, index }) => (
-        <>
-          <div
-            {...props}
-            key={`thumb-${index}`}
-            className={
-              index === 0
-                ? "range-thumb range-thumb-min"
-                : "range-thumb range-thumb-max"
-            }
-          />
-          <div key={`min-value-${index}`} className="min-thumb-value">
-            <span>Prix min: {values[0]}</span>
-          </div>
-          <div key={`max-value-${index}`} className="max-thumb-value">
-            <span>Prix max: {values[1]}</span>
-          </div>
-        </>
+        <div {...props} key={index}>
+          {index === 0 ? (
+            <div className="min-thumb-value">
+              <span>{values[0]}</span>
+            </div>
+          ) : (
+            <div className="max-thumb-value">
+              <span>{values[1]}</span>
+            </div>
+          )}
+        </div>
       )}
     />
   );

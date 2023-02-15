@@ -1,39 +1,20 @@
 .range-track {
   height: 6px;
   width: 100%;
-  background-color: #027680;
+  background-color: #027680db;
   position: relative;
   border-radius: 2px;
-}
 
-.range-thumb {
-  background-color: #027580;
-  height: 15px;
-  width: 15px;
-  border-radius: 50%;
-  border: 1px solid rgb(255, 255, 255);
-
-  position: absolute;
+  display: flex;
+  align-items: flex-start;
 }
 
 .min-thumb-value,
 .max-thumb-value {
-  position: absolute;
-  left: 50%;
-  font-size: 14Òpx;
+  font-size: 16px;
   color: white;
-  background-color: #027580;
+  background-color: #027680;
   border-radius: 3px;
-  padding: 3px;
+  padding: 5px;
   letter-spacing: 1px;
-}
-
-.min-thumb-value {
-  top: -32px;
-  transform: translateX(-160%);
-}
-
-.max-thumb-value {
-  top: -32px;
-  transform: translateX(50%);
 }
