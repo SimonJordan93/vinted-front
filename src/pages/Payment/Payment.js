@@ -18,7 +18,10 @@ const Payment = () => {
   const userId = location.state.data.owner._id;
   const price = location.state.data.product_price;
   const title = location.state.data.product_name;
-  // console.log(userId);
+
+  console.log(userId);
+  console.log(price);
+  console.log(title);
 
   const shippingFee = ((20 / 100) * price).toFixed(2);
   const handleFee = ((10 / 100) * price).toFixed(2);

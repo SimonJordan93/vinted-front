@@ -50,7 +50,7 @@ function App() {
               <Home search={search} values={values} sortPrice={sortPrice} />
             }
           />
-          <Route path="/offer/:id" element={<Offer />} />
+          <Route path="/offer/:id" element={<Offer token={token} />} />
           <Route
             path="/signup"
             element={<Signup handleToken={handleToken} />}

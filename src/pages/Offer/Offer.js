@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import axios from "axios";
 
-const Offer = () => {
+const Offer = ({ token }) => {
   const params = useParams();
   const id = params.id;
   // console.log(params);
@@ -65,7 +65,11 @@ const Offer = () => {
               </span>
             </div>
           </div>
-          <Link to="/payment" className="buy-link" state={{ data: data }}>
+          <Link
+            to={token ? "/payment" : "/login"}
+            className="buy-link"
+            state={{ data: data }}
+          >
             <span>Acheter</span>
           </Link>
         </div>
