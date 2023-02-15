@@ -1,3 +1,5 @@
+import "../CheckoutForm/checkout.css";
+
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import Cookies from "js-cookie";
 import axios from "axios";
@@ -43,19 +45,25 @@ const CheckoutForm = ({ product_name, product_price }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <CardElement />
+    <form className="payment-submit" onSubmit={handleSubmit}>
+      <CardElement className="payment-input" />
 
       {paymentStatus === 2 ? (
         <p>Paiement validé</p>
       ) : (
-        <button disabled={paymentStatus === 1} type="submit">
+        <button
+          className="payment-button"
+          disabled={paymentStatus === 1}
+          type="submit"
+        >
           Pay !
         </button>
       )}
 
       {paymentStatus === 3 && (
-        <p>Une erreur est survenue, veuillez réessayer :) </p>
+        <p className="payment-error">
+          Une erreur est survenue, veuillez réessayer{" "}
+        </p>
       )}
     </form>
   );

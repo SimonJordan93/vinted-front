@@ -1,14 +1,14 @@
 import "./header.css";
 
 import logo from "../../assets/img/logo.svg";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { DebounceInput } from "react-debounce-input";
 
 import Slider from "../Slider/Slider";
 import Switch from "../Toggle/Toggle";
 
 const Header = ({
-  handleToken,
+  handleTokenAndId,
   token,
   search,
   setSearch,
@@ -17,6 +17,11 @@ const Header = ({
   sortPrice,
   setSortPrice,
 }) => {
+  const location = useLocation();
+
+  // check if the current route is '/payment'
+  const isHomePage = location.pathname === "/";
+
   return (
     <header>
       {/* Si le token existe, on affiche déconnexion, sinon s'inscrire et se connecter */}
@@ -37,21 +42,23 @@ const Header = ({
                 type="text"
                 placeholder=" Rechercher des articles"
               ></DebounceInput>
-              <div className="refined-search">
-                <span>Trier par prix:</span>
-                <Switch sortPrice={sortPrice} setSortPrice={setSortPrice} />
-                <span>Prix entre:</span>
-                <div className="price-range">
-                  <Slider values={values} setValues={setValues} />
+              {isHomePage && ( // conditionally render the 'refined-search' div
+                <div className="refined-search">
+                  <span>Trier par prix:</span>
+                  <Switch sortPrice={sortPrice} setSortPrice={setSortPrice} />
+                  <span>Prix entre:</span>
+                  <div className="price-range">
+                    <Slider values={values} setValues={setValues} />
+                  </div>
                 </div>
-              </div>
+              )}
             </div>
 
             <button
               className="logout-btn"
               onClick={() => {
                 // Cookies.remove("token-vinted");
-                handleToken(null);
+                handleTokenAndId(null);
               }}
             >
               Se Déconnecter
